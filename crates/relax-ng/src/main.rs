@@ -1,16 +1,18 @@
 use std::fs::read_to_string;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use quick_xml::de::from_str;
 
-use relax_ng::Grammar;
+use relax_ng::Pattern;
 
+/// TODO: Document this!
 fn main() {
     let xml = read_xml().unwrap();
-    let object: Grammar = from_str(&xml).unwrap();
+    let object: Pattern = from_str(&xml).unwrap();
     println!("{:#?}", object);
 }
 
+/// TODO: Document this!
 fn read_xml() -> Result<String, std::io::Error> {
     let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     path.push("res");
